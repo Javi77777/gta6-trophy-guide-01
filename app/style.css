@@ -1,0 +1,184 @@
+/* Leonida Platinum — original look. Warm sand paper, ink text, neon-pink
+   Vice City accent with a teal second accent. System fonts only, no
+   external files: the whole app works with the network off. */
+
+:root {
+  --paper: #faf5ec;
+  --card: #ffffff;
+  --ink: #1d2430;
+  --muted: #667085;
+  --line: #e3dacb;
+  --accent: #c2275c;
+  --accent-soft: #fbe7ee;
+  --teal: #0e7c7b;
+  --teal-soft: #e2f2f1;
+  --warn-bg: #fff4d6;
+  --warn-line: #d9a400;
+  --platinum: #b9c7d6;
+  --gold: #c9a227;
+  --silver: #8d99a6;
+  --bronze: #a96f35;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+body, button, input, select { font-size: 15px; }
+button, input, select { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 28px 14px;
+  border-bottom: 3px solid var(--accent);
+  background: linear-gradient(135deg, #fdf0f4 0%, var(--paper) 55%);
+}
+
+h1 {
+  font-size: 34px;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.subtitle { margin: 2px 0 6px; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+.facts { margin: 0; color: var(--muted); font-size: 13px; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+
+.progressbox { text-align: right; min-width: 260px; }
+.bignum { font-size: 34px; margin: 0; font-weight: bold; }
+.bignum .of { font-size: 18px; color: var(--muted); }
+.progresslabel { margin: 2px 0 6px; font-size: 13px; color: var(--muted); }
+.progressbar {
+  height: 10px; background: #eadfc9; border-radius: 6px; overflow: hidden;
+}
+.barfill { height: 100%; background: var(--accent); transition: width 0.25s; }
+.nextup { margin: 6px 0 0; font-size: 13px; color: var(--teal); }
+
+.tabs { display: flex; gap: 4px; padding: 0 28px; background: var(--card); border-bottom: 1px solid var(--line); }
+.tab {
+  padding: 10px 16px; text-decoration: none; color: var(--ink);
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-weight: 600;
+  border-bottom: 3px solid transparent;
+}
+.tab.active { border-bottom-color: var(--accent); color: var(--accent); }
+
+.controls {
+  display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center;
+  padding: 12px 28px; background: var(--card); border-bottom: 1px solid var(--line);
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-size: 14px;
+}
+.controls[hidden] { display: none; }
+.controls label { display: flex; align-items: center; gap: 6px; }
+.controls input[type="search"] { width: 230px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; }
+.controls select { padding: 6px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+.controls .spacer { flex: 1; }
+button {
+  padding: 7px 12px; border-radius: 6px; border: 1px solid var(--accent);
+  background: var(--accent); color: #fff; cursor: pointer;
+}
+button.quiet { background: #fff; color: var(--ink); border-color: var(--line); }
+.importbtn {
+  padding: 7px 12px; border-radius: 6px; border: 1px solid var(--line);
+  background: #fff; cursor: pointer;
+}
+.importbtn input { display: none; }
+.spoiler { accent-color: var(--accent); }
+
+main { padding: 18px 28px 30px; }
+.view h2 { font-size: 24px; margin: 4px 0 8px; }
+.lede { max-width: 860px; color: #3c4454; }
+
+.layout { display: flex; gap: 20px; align-items: flex-start; }
+.listcol { flex: 1 1 620px; min-width: 0; }
+.listmeta { margin: 0 0 8px; color: var(--muted); font-size: 13px; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+
+.trophylist { list-style: none; margin: 0; padding: 0; }
+.trophyrow {
+  display: flex; gap: 10px; align-items: flex-start;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 9px 12px; margin-bottom: 7px; cursor: pointer;
+}
+.trophyrow:hover { border-color: var(--accent); }
+.trophyrow.selected { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.trophyrow.earned { background: #f4fbf4; }
+.trophyrow input { margin-top: 4px; width: 17px; height: 17px; accent-color: var(--teal); flex: none; }
+.trophyrow .tname { font-weight: bold; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+.trophyrow .tdesc { color: var(--muted); font-size: 13.5px; }
+.trophyrow .tmeta { margin-left: auto; text-align: right; flex: none; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+.medal {
+  display: inline-block; padding: 1px 8px; border-radius: 20px;
+  font-size: 12px; font-weight: 700; color: #fff; text-transform: capitalize;
+}
+.medal.platinum { background: #7d93a8; }
+.medal.gold { background: var(--gold); }
+.medal.silver { background: var(--silver); }
+.medal.bronze { background: var(--bronze); }
+.tag {
+  display: inline-block; margin: 3px 2px 0 0; padding: 1px 7px; border-radius: 20px;
+  background: var(--teal-soft); color: var(--teal); font-size: 11.5px; font-weight: 600;
+}
+.tag.missable { background: #fde9c8; color: #8a5a00; }
+.tag.hidden { background: #ece7f5; color: #5b4a8a; }
+.spoilered { color: var(--muted); font-style: italic; }
+
+.detail {
+  flex: 0 0 430px; position: sticky; top: 12px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  padding: 16px 18px;
+}
+.detail h2 { font-size: 21px; margin: 0 0 2px; }
+.detail .official { color: var(--muted); font-style: italic; margin: 2px 0 10px; }
+.detail h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--accent); margin: 14px 0 4px; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+.detail p { margin: 4px 0; }
+.detail ol { margin: 4px 0 4px 20px; padding: 0; }
+.detail ol li { margin-bottom: 3px; }
+.detail .countline { font-weight: bold; color: var(--teal); }
+.detail .sources { font-size: 13px; }
+.detail .sources a { color: var(--teal); }
+.detail .sources li { margin-bottom: 3px; }
+.detail .unconfirmed { background: var(--warn-bg); border-left: 3px solid var(--warn-line); padding: 8px 10px; border-radius: 0 6px 6px 0; }
+.detail .empty-detail { color: var(--muted); }
+
+.roadmap { list-style: none; padding: 0; max-width: 900px; }
+.roadmap li {
+  background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--accent);
+  border-radius: var(--radius); padding: 14px 18px; margin-bottom: 14px;
+}
+.roadmap h3 { margin: 0 0 6px; font-size: 18px; }
+.warn { background: var(--warn-bg); border-left: 3px solid var(--warn-line); padding: 8px 10px; border-radius: 0 6px 6px 0; }
+.trophiesin { color: var(--teal); font-size: 14px; }
+.source-note { color: var(--muted); font-size: 13px; }
+
+.misscard {
+  background: var(--card); border: 2px solid var(--warn-line); border-radius: var(--radius);
+  padding: 14px 18px; max-width: 900px;
+}
+.missname { font-weight: bold; font-size: 17px; margin: 0 0 6px; }
+.warnings { max-width: 900px; }
+.warnings li { margin-bottom: 6px; }
+.sourcelist { max-width: 900px; }
+.sourcelist li { margin-bottom: 6px; }
+.sourcelist a { color: var(--teal); }
+.view h3 { margin-top: 20px; }
+
+.empty { color: var(--muted); background: var(--card); border: 1px dashed var(--line); border-radius: var(--radius); padding: 16px; }
+
+footer {
+  padding: 16px 28px 24px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 12.5px;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+@media (max-width: 900px) {
+  .layout { flex-direction: column; }
+  .detail { position: static; flex-basis: auto; width: 100%; }
+  .top { flex-direction: column; }
+  .progressbox { text-align: left; }
+}
